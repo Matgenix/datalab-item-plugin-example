@@ -1,0 +1,106 @@
+[build-system]
+requires = ["setuptools >= 75", "wheel", "setuptools_scm ~= 8.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "datalab-item-plugin-example"
+description = "An example of a custom item plugin "
+readme = "README.md"
+keywords = []
+license = { text = "MIT" }
+authors = [{ name = "Julien Bouquiaux", email = "julien.bouquiaux@matgenix.com" }]
+dynamic = ["version"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Information Technology",
+    "Operating System :: OS Independent",
+    "Topic :: Other/Nonlisted Topic",
+    "Topic :: Scientific/Engineering",
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+homepage = "https://Matgenix.github.io/datalab-item-plugin-example/"
+repository = "https://github.com/Matgenix/datalab-item-plugin-example"
+documentation = "https://Matgenix.github.io/datalab-item-plugin-example/"
+changelog = "https://github.com/Matgenix/datalab-item-plugin-example/releases"
+
+# Each entry point in this group is loaded by datalab at startup and registered
+# as a custom item type. Add one line per item model implemented in this plugin;
+# the entry point name should match the model's `type` literal.
+[project.entry-points.'pydatalab.item_types']
+solutions = "datalab_item_plugin_example.models:Solution"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = true
+
+[tool.setuptools.package-data]
+datalab_item_plugin_example = ["py.typed"]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+fallback_version = "0.1.0"
+
+[tool.mypy]
+ignore_missing_imports = true
+follow_imports = "skip"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "Q"]
+ignore = ["E501", "E402"]
+fixable = ["A", "B", "C", "D", "E", "F", "I"]
+unfixable = []
+per-file-ignores = {}
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[dependency-groups]
+dev = [
+    "datalab-server[server,apps]",
+    "pytest ~= 8.2",
+    "pytest-cov ~= 5.0",
+    "pre-commit ~= 4.0",
+    "mkdocs ~= 1.6",
+    "mkdocs-material ~= 9.5",
+    "mkdocstrings[python] ~= 0.30",
+    "docstring-inheritance ~= 2.2",
+    "griffe-inherited-docstrings ~= 1.1",
+    "mkdocs-awesome-pages-plugin ~= 2.9",
+    "markdown-callouts ~= 0.4",
+]
+
+# Custom item types are not yet part of a released datalab-server version, so the
+# development dependency is installed from the feature branch for now.
+# TODO: once custom item types land in a datalab-server release, delete this
+# section and pin e.g. `datalab-server[server,apps] ~= 0.7` above instead.
+[tool.uv.sources]
+datalab-server = { git = "https://github.com/datalab-org/datalab", branch = "ml-evs/custom-items", subdirectory = "pydatalab" }
+
+[tool.coverage.run]
+include = ["src/*"]
+parallel = true
+branch = true
+
+[tool.coverage.paths]
+source = ["src/"]
+
+[tool.coverage.report]
+skip_covered = true
+show_missing = true
+exclude_lines = [
+    '^\s*assert False(,|$)',
+    'if typing.TYPE_CHECKING:',
+    '^\s*@overload( |$)',
+]

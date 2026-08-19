@@ -1,0 +1,17 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 91f1420
+_src_path: https://github.com/Matgenix/datalab-item-plugin-template
+author_email: julien.bouquiaux@matgenix.com
+author_fullname: Julien Bouquiaux
+copyright_date: '2026'
+copyright_holder: ''
+copyright_holder_email: ''
+include_custom_panel: false
+item_class_name: Solution
+item_type_name: solutions
+package_name: datalab_item_plugin_example
+project_name: datalab-item-plugin-example
+repository_name: datalab-item-plugin-example
+repository_namespace: Matgenix
+short_description: 'An example of a custom item plugin '
+
