@@ -19,7 +19,7 @@ datalab-item-plugin-example is a [*datalab*](https://datalab-org.io) plugin gene
 
 It registers the custom item type `solutions` — a solution of a single solute at a stated
 concentration (implemented by
-[`datalab_item_plugin_example.models.Solution`](src/datalab_item_plugin_example/models.py)) — with *datalab*
+[`datalab_item_plugin_example.models.Solution`](https://github.com/Matgenix/datalab-item-plugin-example/blob/main/src/datalab_item_plugin_example/models.py)) — with *datalab*
 via the `pydatalab.item_types` entry point, making it available through the standard item
 endpoints and the web UI.
 
