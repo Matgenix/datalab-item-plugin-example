@@ -12,9 +12,7 @@ authors = [{ name = "Julien Bouquiaux", email = "julien.bouquiaux@matgenix.com" 
 dynamic = ["version"]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Science/Research",
     "Intended Audience :: System Administrators",
@@ -23,7 +21,7 @@ classifiers = [
     "Topic :: Other/Nonlisted Topic",
     "Topic :: Scientific/Engineering",
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11,<3.12"
 dependencies = []
 
 [project.urls]
@@ -55,7 +53,7 @@ follow_imports = "skip"
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W", "Q"]
@@ -81,12 +79,8 @@ dev = [
     "markdown-callouts ~= 0.4",
 ]
 
-# Custom item types are not yet part of a released datalab-server version, so the
-# development dependency is installed from the feature branch for now.
-# TODO: once custom item types land in a datalab-server release, delete this
-# section and pin e.g. `datalab-server[server,apps] ~= 0.7` above instead.
 [tool.uv.sources]
-datalab-server = { git = "https://github.com/datalab-org/datalab", branch = "ml-evs/custom-items", subdirectory = "pydatalab" }
+datalab-server = { git = "https://github.com/datalab-org/datalab", branch = "main", subdirectory = "pydatalab" }
 
 [tool.coverage.run]
 include = ["src/*"]
