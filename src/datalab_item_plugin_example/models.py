@@ -11,7 +11,7 @@ The valid ``datalab_*`` hints are defined (and validated at registration) in
 
 - fields: ``datalab_include_field_in_summary``, ``datalab_hidden``,
   ``datalab_multiline``, ``datalab_section``, ``datalab_ref_types``,
-  ``datalab_unit_field``, ``datalab_units``, ``datalab_default_unit``
+  ``datalab_quantity``
 - model config: ``datalab_ui_color``, ``datalab_ui_hidden_fields``,
   ``datalab_section_title``, ``datalab_base_type``
 """
@@ -56,14 +56,21 @@ class Solution(Sample):
         ge=0,
         json_schema_extra={
             "datalab_include_field_in_summary": True,
-            "datalab_units": ["mol/L", "mmol/L"],
-            "datalab_default_unit": "mol/L",
-            "datalab_unit_field": "concentration_unit",
+            "datalab_quantity": {
+                # The model, REST API and database always use mol/L. The web UI
+                # may convert to mmol/L without changing the stored value.
+                "canonical_unit": "mol/L",
+                "display_units": {
+                    "mol/L": {"scale": 1.0},
+                    "mmol/L": {"scale": 0.001},
+                },
+                "default_display_unit": "mol/L",
+                "display_unit_field": "concentration_display_unit",
+            },
         },
     )
-    concentration_unit: Literal["mol/L", "mmol/L"] = Field(
-        "mol/L", json_schema_extra={"datalab_hidden": True}
-    )
+    concentration_display_unit: Literal["mol/L", "mmol/L"] | None = None
+    """Presentation preference only; ``concentration`` always uses mol/L."""
 
     solvent: EntryReference | None = Field(
         None, json_schema_extra={"datalab_ref_types": _SUBSTANCE_REF_TYPES}
