@@ -13,7 +13,7 @@ The valid ``datalab_*`` hints are defined (and validated at registration) in
   ``datalab_multiline``, ``datalab_section``, ``datalab_ref_types``,
   ``datalab_quantity``
 - model config: ``datalab_ui_color``, ``datalab_ui_hidden_fields``,
-  ``datalab_section_title``, ``datalab_base_type``
+  ``datalab_section_title``
 """
 
 from typing import Literal
