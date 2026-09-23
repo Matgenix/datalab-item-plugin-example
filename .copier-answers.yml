@@ -8,10 +8,9 @@ copyright_holder: ''
 copyright_holder_email: ''
 include_custom_panel: false
 item_class_name: Solution
-item_type_name: solutions
+item_type_name: example-solutions
 package_name: datalab_item_plugin_example
 project_name: datalab-item-plugin-example
 repository_name: datalab-item-plugin-example
 repository_namespace: Matgenix
 short_description: 'An example of a custom item plugin '
-

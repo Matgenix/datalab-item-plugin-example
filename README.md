@@ -15,13 +15,16 @@ datalab-item-plugin-example is a [*datalab*](https://datalab-org.io) plugin gene
 > no JavaScript. Its companion example,
 > [datalab-item-plugin-example-custom-vue](https://github.com/Matgenix/datalab-item-plugin-example-custom-vue),
 > shows the other kind: an item type rendered by its own custom Vue panel, whose
-> `mixed_solutions` items reference the `solutions` items defined here.
+> `example-mixed-solutions` items reference the `example-solutions` items defined here.
 
-It registers the custom item type `solutions` — a solution of a single solute at a stated
-concentration (implemented by
+It registers the canonical custom item type `example-solutions` — a solution of a single solute
+at a stated concentration (implemented by
 [`datalab_item_plugin_example.models.Solution`](https://github.com/Matgenix/datalab-item-plugin-example/blob/main/src/datalab_item_plugin_example/models.py)) — with *datalab*
 via the `pydatalab.item_types` entry point, making it available through the standard item
 endpoints and the web UI.
+
+The complete slug is used wherever the type is referenced. Its namespace and type name are
+conceptual components only; *datalab* does not store or query them separately at present.
 
 The item's fields carry `datalab_*` schema annotations and are rendered automatically by the
 *datalab* web UI — no JavaScript is needed in this plugin. If you later want full control over

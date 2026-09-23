@@ -3,8 +3,8 @@
 
 The fields carry ``datalab_*`` schema hints and are rendered automatically by
 the datalab web UI — this plugin ships no JavaScript. The companion plugin
-`datalab-item-plugin-example-custom-vue` defines a ``mixed_solutions`` type
-that references items of this type and renders them with a custom Vue panel.
+`datalab-item-plugin-example-custom-vue` defines an ``example-mixed-solutions``
+type that references items of this type and renders them with a custom Vue panel.
 
 The valid ``datalab_*`` hints are defined (and validated at registration) in
 ``pydatalab.models.schema_hints``:
@@ -43,9 +43,8 @@ class Solution(Sample):
         },
     )
 
-    # The unique type identifier for this model; it must not collide with a
-    # built-in type (samples, cells, starting_materials, equipment) or another plugin.
-    type: Literal["solutions"] = "solutions"  # type: ignore[assignment]
+    # The complete canonical type identifier has the form `<namespace>-<type-name>`.
+    type: Literal["example-solutions"] = "example-solutions"  # type: ignore[assignment]
 
     solute: EntryReference | None = Field(
         None, json_schema_extra={"datalab_ref_types": _SUBSTANCE_REF_TYPES}

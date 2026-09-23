@@ -34,7 +34,7 @@ changelog = "https://github.com/Matgenix/datalab-item-plugin-example/releases"
 # as a custom item type. Add one line per item model implemented in this plugin;
 # the entry point name should match the model's `type` literal.
 [project.entry-points.'pydatalab.item_types']
-solutions = "datalab_item_plugin_example.models:Solution"
+example-solutions = "datalab_item_plugin_example.models:Solution"
 
 [tool.setuptools.packages.find]
 where = ["src"]
