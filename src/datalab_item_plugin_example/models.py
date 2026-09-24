@@ -3,7 +3,7 @@
 
 The fields carry ``datalab_*`` schema hints and are rendered automatically by
 the datalab web UI — this plugin ships no JavaScript. The companion plugin
-`datalab-item-plugin-example-custom-vue` defines an ``example-mixed-solutions``
+`datalab-item-plugin-example-custom-vue` defines an ``example:mixed-solutions``
 type that references items of this type and renders them with a custom Vue panel.
 
 The valid ``datalab_*`` hints are defined (and validated at registration) in
@@ -43,8 +43,8 @@ class Solution(Sample):
         },
     )
 
-    # The complete canonical type identifier has the form `<namespace>-<type-name>`.
-    type: Literal["example-solutions"] = "example-solutions"  # type: ignore[assignment]
+    # The complete canonical type identifier has the form `<namespace>:<type-name>`.
+    type: Literal["example:solutions"] = "example:solutions"  # type: ignore[assignment]
 
     solute: EntryReference | None = Field(
         None, json_schema_extra={"datalab_ref_types": _SUBSTANCE_REF_TYPES}

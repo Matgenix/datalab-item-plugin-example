@@ -23,7 +23,7 @@ def test_model_registers_with_datalab():
     from pydatalab.models import ITEM_MODELS, register_item_model
 
     register_item_model(Solution)
-    assert ITEM_MODELS["example-solutions"] is Solution
+    assert ITEM_MODELS["example:solutions"] is Solution
 
 
 def test_model_round_trip():
@@ -32,7 +32,7 @@ def test_model_round_trip():
         concentration=1.0,
         concentration_display_unit="mmol/L",
     )
-    assert item.type == "example-solutions"
+    assert item.type == "example:solutions"
     restored = Solution(**item.model_dump())
     assert restored.item_id == "test-item-1"
     assert restored.concentration == 1.0
